@@ -1,0 +1,22 @@
+import django_tables2 as tables
+from django.utils.html import escape
+from django.utils.safestring import mark_safe
+
+from .models import Person
+
+
+class PersonTable(tables.Table):
+    passport = tables.Column(empty_values=(), verbose_name='Паспорт')
+    delete = tables.TemplateColumn('<a href="/detail/{{ record.pk }}/">Подробнее</a>', verbose_name='')
+
+    def render_passport(self, record):
+        if record.documents.exists():
+            return ', '.join([p.number if p.type == 'PASSPORT' else '' for p in record.documents.all()])
+        return ''
+
+    class Meta:
+        model = Person
+        fields = ('full_name', 'date_of_birth', 'gender', 'phone_number', 'start_date', 'end_date', 'training_group',
+                  'educational_institution', 'passport')
+        # row_attrs = {'data-id': lambda record: record.pk}
+        template_name = 'django_tables2/bootstrap-responsive.html'
