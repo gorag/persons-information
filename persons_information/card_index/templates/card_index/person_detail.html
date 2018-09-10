@@ -13,10 +13,15 @@
         <p><strong>Наименование учебного заведения:</strong> {{ person.educational_institution }}</p>
 
         <div style="margin-left: 20px;margin-top: 20px">
-            <h2>Документы</h2>
-            {% for document in person.documents.all %}
-                <p>{{ document }}</p>
-            {% endfor %}
+            {% if person.documents.exists %}
+                <h2>Документы</h2>
+                {% for document in person.documents.all %}
+                    <p>{{ document }}</p>
+                {% endfor %}
+            {% else %}
+                <h2>Документов нет</h2>
+            {% endif %}
         </div>
     </div>
+    <a href='{% url 'persons' %}' class="btn btn-default">Назад</a>
 {% endblock %}

@@ -11,5 +11,5 @@ def persons(request):
     return render(request, 'card_index/person_list.html', {'table': table})
 
 
-class PersonView(DetailView):
+class PersonDetailView(DetailView):
     model = Person
