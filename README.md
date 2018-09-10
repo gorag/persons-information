@@ -1,1 +1,11 @@
-# persons-information
+# Persons Information
+
+### Install
+```
+pip install -r requirements.txt
+
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py runserver
+```

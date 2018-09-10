@@ -3,17 +3,20 @@
 {% block page_content %}
     <h2>Данные персоны</h2>
     <div class="row ">
-        <div>
-            <h3>ФИО</h3>
-            <h4 class="text-info">{{ person.full_name }}</h4>
-        </div>
-        <div>
-            <h3>Дата рождения</h3>
-            <h4 class="text-info">{{ person.date_of_birth }}</h4>
-        </div>
-        <div>
-            <h3>Пол</h3>
-            <h4 class="text-info">{{ person.get_gender_display }}</h4>
+        <p><strong>ФИО:</strong> {{ person.full_name }}</p>
+        <p><strong>Дата рождения:</strong> {{ person.date_of_birth }}</p>
+        <p><strong>Пол:</strong> {{ person.get_gender_display }}</p>
+        <p><strong>Номер мобильного телефона:</strong> {{ person.phone_number }}</p>
+        <p><strong>Срок обучения с:</strong> {{ person.start_date }}</p>
+        <p><strong>Срок обучения по:</strong> {{ person.end_date }}</p>
+        <p><strong>Группа обучения:</strong> {{ person.training_group }}</p>
+        <p><strong>Наименование учебного заведения:</strong> {{ person.educational_institution }}</p>
+
+        <div style="margin-left: 20px;margin-top: 20px">
+            <h2>Документы</h2>
+            {% for document in person.documents.all %}
+                <p>{{ document }}</p>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

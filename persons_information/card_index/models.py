@@ -13,7 +13,7 @@ class Person(models.Model):
 
     gender = models.CharField(max_length=6, choices=GENDER, verbose_name='Пол')
     phone_number = models.CharField(
-        max_length=12,
+        max_length=20,
         blank=True,
         verbose_name='Номер мобильного телефона',
     )
