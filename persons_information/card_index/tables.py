@@ -5,7 +5,11 @@ from .models import Person
 
 class PersonTable(tables.Table):
     passport = tables.Column(empty_values=(), verbose_name='Паспорт')
-    delete = tables.TemplateColumn('<a href="{{ record.get_absolute_url }}" class="btn btn-default">Подробнее</a>', verbose_name='')
+    delete = tables.TemplateColumn(
+        '<a href="{{ record.get_absolute_url }}" class="btn btn-default" >'
+        '<span class="glyphicon glyphicon-expand"></span>'
+        '</a>',
+        verbose_name='')
 
     def render_passport(self, record):
         if record.documents.exists():

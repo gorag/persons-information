@@ -32,7 +32,7 @@ class PersonsFactory(factory.django.DjangoModelFactory):
         factory.Faker(
             'date_between_dates',
             'ru_RU',
-            date_start=o.date_start
+            date_start=o.start_date
         ).generate({})
     )
     training_group = factory.Faker('sentence', 'ru_RU', nb_words=3)
